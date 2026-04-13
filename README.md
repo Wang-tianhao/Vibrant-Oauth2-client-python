@@ -183,8 +183,10 @@ Clears the cached token, forcing a new token fetch on the next `get_token()` cal
 Represents the OAuth2 token response from Vibrant.
 - `access_token: str`
 - `token_type: str`
-- `expires_in: int`
+- `expires_in: int` — relative lifetime in seconds
+- `expires_at: Optional[float]` — absolute Unix timestamp, when provided by the server
 - `scope: Optional[str]`
+- `refresh_token: Optional[str]`
 
 #### `CachedToken`
 Represents a cached access token with expiration tracking.

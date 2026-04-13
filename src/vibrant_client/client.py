@@ -76,9 +76,14 @@ class Client:
 
         token_resp = TokenResponse(**resp.json())
 
+        expires_at = (
+            float(token_resp.expires_at)
+            if token_resp.expires_at is not None
+            else time.time() + token_resp.expires_in
+        )
         self._cache = CachedToken(
             access_token=f"{token_resp.token_type} {token_resp.access_token}",
-            expires_at=time.time() + token_resp.expires_in,
+            expires_at=expires_at,
         )
 
         return self._cache.access_token

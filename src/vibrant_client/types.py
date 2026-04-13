@@ -9,7 +9,9 @@ class TokenResponse:
     access_token: str
     token_type: str
     expires_in: int
+    expires_at: Optional[float] = None
     scope: Optional[str] = None
+    refresh_token: Optional[str] = None
 
 
 @dataclass
